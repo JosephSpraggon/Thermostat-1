@@ -18,21 +18,21 @@ class Thermostat{
 
     resetTemp(){
         this.currentTemperature = this.DEFAULT_TEMPERATURE;
-    }
+    };
 
     raiseTemp(){
         if (this.isMaximumTemp()) {
             throw new Error('maximum temperature reached');
         }
      this.currentTemperature += 1;
-    }
+    };
 
     decreaseTemp(){
        if (this.isMinimumTemp()) {
            throw new Error('Minimum temperature reached');
        }
        this.currentTemperature -= 1;
-    }
+    };
 
     checkPowerMode(){
         return this.powerSavingMode;
@@ -40,18 +40,18 @@ class Thermostat{
 
     powerModeOff(){
         this.powerSavingMode = false;
-    }
+    };
 
     powerModeOn(){
         this.powerSavingMode = true;
-    }
+    };
 
     isMaximumTemp() {
         if (this.checkPowerMode() === false) { 
             return this.currentTemperature === this.MAXIMUM_TEMP_PSM_OFF;
         }
         return this.currentTemperature === this.MAXIMUM_TEMP_PSM_ON;
-    }
+    };
 
     isMinimumTemp(){
         return this.currentTemperature === this.MINIMUM_TEMPERATURE;
@@ -65,6 +65,6 @@ class Thermostat{
             return 'medium-usage'; 
         }
         return 'high-usage'
-    }
+    };
 };
 
