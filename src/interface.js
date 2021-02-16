@@ -18,8 +18,27 @@ $(document).ready(function(){
     updateTemperature();
   })
 
+  $('#powersaving-on').click(function(){
+    thermostat.powerModeOn();
+    $('#power-saving-status').text('on')
+    updateTemperature();
+  })
+
+  $('#powersaving-off').click(function(){
+    thermostat.powerModeOff();
+    $('#power-saving-status').text('off')
+    updateTemperature();
+  })
+
   function updateTemperature(){
     $('#temperature').text(thermostat.currentTemperature);
-  };
+    if(thermostat.energyUsage() === 'low-usage'){
+      $('#temperature').css('color', 'green')
+    } else if(thermostat.energyUsage() === 'medium-usage'){
+      $('#temperature').css('color', 'black')
+    } else {
+      $('#temperature').css('color', 'red')
+    }
+  }
 
 });
